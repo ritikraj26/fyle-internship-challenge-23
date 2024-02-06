@@ -1,10 +1,8 @@
 <title>{{title}}</title>
 
-<app-search-bar (searchEvent)="searchRepositories($event)"></app-search-bar>
+<app-search-bar *ngIf="!loading" (searchEvent)="searchRepositories($event)"></app-search-bar>
 
-
-
-<div style="height: 100%; display: flex;" *ngIf="loading; else content">
+<div *ngIf="loading; else content" class="fixed top-0 left-0 w-screen h-screen flex justify-center items-center bg-gray-100">
   <app-skeleton></app-skeleton>
 </div>
 
@@ -32,15 +30,17 @@
       </div>
     </div>
 
-    <div class="mt-8">
-      <app-pagination
-        [currentPage]="currentPage"
-        [itemsPerPage]="itemsPerPage"
-        [totalPages]="totalPages"
-        [pages]="pages"
-        (onPageChange)="onPageChange($event)"
-        (changeItemsPerPage)="changeItemsPerPage($event)"
-      ></app-pagination>
+    <div *ngIf="username !== ''">
+      <div class="mt-8">
+        <app-pagination
+          [currentPage]="currentPage"
+          [itemsPerPage]="itemsPerPage"
+          [totalPages]="totalPages"
+          [pages]="pages"
+          (onPageChange)="onPageChange($event)"
+          (changeItemsPerPage)="changeItemsPerPage($event)"
+        ></app-pagination>
+      </div>
     </div>
   </div>
 </ng-template>

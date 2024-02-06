@@ -1,47 +1,45 @@
 <div class="container mx-auto mt-4 flex flex-col items-center justify-center">
-    <div class="flex items-center">
-      <button 
-        class="bg-blue-500 text-white p-2 rounded mr-2"
-        (click)="triggerPageChange(currentPage - 1)"
-        [disabled]="currentPage === 1"
-      >
-        Previous
-      </button>
-      <ng-container *ngFor="let page of pages">
-        <button 
-          (click)="triggerPageChange(page)"
-          class="p-2 rounded cursor-pointer mr-2"
-          [class.bg-blue-500]="page === currentPage"
-          [class.text-white]="page === currentPage"
-          [class.border]="page !== currentPage"
-          [class.border-black]="page !== currentPage"
-          style="width: 2rem;"
-        >
-          {{ page }}
-        </button>
-      </ng-container>
-      <button 
-        class="bg-blue-500 text-white p-2 rounded"
-        (click)="triggerPageChange(currentPage + 1)"
-        [disabled]="currentPage === totalPages"
-      >
-        Next
-      </button>
-    </div>
-  </div>
-  
-  
-  <div class="items-per-page mt-4 flex items-center justify-center">
-    <label for="itemsPerPage" class="mr-2 text-gray-700 font-semibold">Items Per Page:</label>
-    <select 
-      id="itemsPerPage" 
-      class="border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500"
-      (change)="triggerItemsPerPageChange($event)"
+  <div class="flex items-center">
+    <button 
+      class="bg-blue-500 text-white p-2 rounded mr-2"
+      (click)="triggerPageChange(currentPage - 1)"
+      [disabled]="currentPage === 1"
     >
-      <option value="10" class="text-gray-700">10</option>
-      <option value="20" class="text-gray-700">20</option>
-      <option value="50" class="text-gray-700">50</option>
-      <option value="100" class="text-gray-700">100</option>
-    </select>
+      Previous
+    </button>
+    <ng-container *ngFor="let page of pages">
+      <button 
+        (click)="triggerPageChange(page)"
+        class="p-2 rounded cursor-pointer mr-2"
+        [class.bg-blue-500]="page === currentPage"
+        [class.text-white]="page === currentPage"
+        [class.border]="page !== currentPage"
+        [class.border-black]="page !== currentPage"
+        style="width: 2rem;"
+      >
+        {{ page }}
+      </button>
+    </ng-container>
+    <button 
+      class="bg-blue-500 text-white p-2 rounded"
+      (click)="triggerPageChange(currentPage + 1)"
+      [disabled]="currentPage === totalPages"
+    >
+      Next
+    </button>
   </div>
-  
+</div>
+
+<div class="items-per-page mt-4 flex items-center justify-center">
+  <label for="itemsPerPage" class="mr-2 text-gray-700 font-semibold">Items Per Page:</label>
+  <select 
+    id="itemsPerPage" 
+    class="border border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500"
+    (change)="triggerItemsPerPageChange($event)"
+  >
+    <option value="10" class="text-gray-700">10</option>
+    <option value="20" class="text-gray-700">20</option>
+    <option value="50" class="text-gray-700">50</option>
+    <option value="100" class="text-gray-700">100</option>
+  </select>
+</div>

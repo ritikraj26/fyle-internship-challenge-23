@@ -37,12 +37,15 @@ export class AppComponent implements OnInit {
   }
 
   loadUser() {
+    this.loading=true;
     this.apiService.getUser(this.username).subscribe(
       (user) => {
         this.user = user;
+        this.loading=false;
       },
       (error) => {
         console.log(error);
+        this.loading=false;
       }
     );
   }
@@ -59,13 +62,16 @@ export class AppComponent implements OnInit {
   }
 
   loadRepos() {
+    this.loading=true;
     this.apiService.getRepos(this.username, this.currentPage, this.itemsPerPage).subscribe(
       (repos) => {
         this.repos = (repos as any[]).map((repo: any) => ({...repo, languages: []}));
         this.loadLanguages();
+        this.loading=false;
       },
       (error) => {
         console.log(error);
+        this.loading=false;
       }
     );
   }
