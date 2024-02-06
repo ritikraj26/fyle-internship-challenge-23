@@ -41,11 +41,11 @@ export class AppComponent implements OnInit {
     this.apiService.getUser(this.username).subscribe(
       (user) => {
         this.user = user;
-        this.loading=false;
+        // this.loading=false;
       },
       (error) => {
         console.log(error);
-        this.loading=false;
+        // this.loading=false;
       }
     );
   }
@@ -67,11 +67,11 @@ export class AppComponent implements OnInit {
       (repos) => {
         this.repos = (repos as any[]).map((repo: any) => ({...repo, languages: []}));
         this.loadLanguages();
-        this.loading=false;
+        // this.loading=false;
       },
       (error) => {
         console.log(error);
-        this.loading=false;
+        // this.loading=false;
       }
     );
   }
