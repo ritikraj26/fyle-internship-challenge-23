@@ -21,8 +21,8 @@ export class AppComponent implements OnInit{
   itemsPerPage: number = 10;
   totalRepos: number = 1;
   
-  onEnter(event: any) {
-    this.username = event.target.value;
+  searchRepositories(userInput: string) {
+    this.username = userInput;
     this.ngOnInit();
   }
 
