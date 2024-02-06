@@ -1,5 +1,45 @@
-<div class="grid h-screen place-items-center">
-  <div class="font-bold text-3xl">
-    Fyle Internship Challenge
-  </div>
+<title>{{title}}</title>
+<div class="flex justify-center mb-8 mt-4"> 
+  <input type="text" (keyup.enter)="onEnter($event)" placeholder="Enter a value" class="border border-gray-300 rounded-md px-4 py-2">
 </div>
+
+<div style="height: 100%; display: flex;" *ngIf="loading; else content">
+  <app-skeleton></app-skeleton>
+</div>
+
+<ng-template #content>
+  <div class="container mx-auto mt-8">
+    
+    <div *ngIf="user" class="bg-white shadow-md rounded-lg p-6 flex items-center mb-8">
+      <img [src]="user.avatar_url" alt="Image" class="w-40 h-40 rounded-full border border-gray-500 mr-6">
+      
+      <div>
+        <h2 class="text-4xl font-bold mb-2">{{user.name}}</h2>
+        <p class="text-gray-600 mb-2">{{user.bio}}</p>
+        <p *ngIf="user.location" class="text-gray-700 flex items-center">
+          <span class="mr-2">📍</span> {{user.location}}
+        </p>
+        <p class="text-black hover:underline">
+          <a href="{{user.html_url}}" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-2 gap-4">
+        <app-card *ngFor="let repo of repos" [repository]="repo"></app-card>
+      </div>
+    </div>
+
+    <div class="mt-8">
+      <app-pagination
+        [currentPage]="currentPage"
+        [itemsPerPage]="itemsPerPage"
+        [totalPages]="totalPages"
+        [pages]="pages"
+        (onPageChange)="onPageChange($event)"
+        (changeItemsPerPage)="changeItemsPerPage($event)"
+      ></app-pagination>
+    </div>
+  </div>
+</ng-template>
