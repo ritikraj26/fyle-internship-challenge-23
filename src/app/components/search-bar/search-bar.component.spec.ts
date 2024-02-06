@@ -18,4 +18,17 @@ describe('SearchBarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should emit searchEvent with the entered value when onEnter is called', () => {
+    const userInput = 'test';
+    let emittedValue: string | undefined;
+
+    component.searchEvent.subscribe(value => {
+      emittedValue = value;
+    });
+
+    component.onEnter(userInput);
+
+    expect(emittedValue).toEqual(userInput);
+  });
 });
