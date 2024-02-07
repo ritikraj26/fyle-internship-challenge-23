@@ -95,6 +95,7 @@ export class AppComponent implements OnInit {
   }
 
   changeItemsPerPage(newItemsPerPage: number) {
+    this.currentPage = 1;
     this.itemsPerPage = newItemsPerPage;
     this.loadRepos();
   }

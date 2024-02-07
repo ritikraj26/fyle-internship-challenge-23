@@ -8,8 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ApiService {
 
-  // accessToken: string = environment.githubAccessToken;
-  accessToken = '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';
+  accessToken: string = environment.githubAccessToken;
   headers = new HttpHeaders({
     'Authorization': `token ${this.accessToken}`
   });
