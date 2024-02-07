@@ -22,3 +22,7 @@ Run `ng test --include=app/services/api.service.spec.ts` from the root directory
 
 Visit the [Angular Documentation](https://angular.io/guide/styleguide) to learn more.
 Styling is to be strictly done with [Tailwind](https://tailwindcss.com/docs/installation).
+
+## Hosted link
+
+https://ritikraj26.github.io/fyle-internship-challenge-23/
