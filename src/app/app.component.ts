@@ -90,6 +90,9 @@ export class AppComponent implements OnInit {
   }
 
   onPageChange(newPage: number) {
+    if (newPage === this.currentPage) {
+      return;
+    }
     this.currentPage = newPage;
     this.loadRepos();
   }
